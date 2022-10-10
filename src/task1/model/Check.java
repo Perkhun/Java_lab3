@@ -4,26 +4,15 @@ import java.util.ArrayList;
 
 
 public class Check {
-    private String name;
+    private int id;
+    private String nameCustomer;
     private ArrayList<Product> listProducts = new ArrayList<>();
 
-    public Check(String name, ArrayList<Product> listProducts, double price, int id) {
-        this.name = name;
-        this.listProducts = listProducts;
-        this.price = price;
+    public Check(int id, String nameCustomer, ArrayList<Product> listProducts) {
         this.id = id;
+        this.nameCustomer = nameCustomer;
+        this.listProducts = listProducts;
     }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    private double price;
-    private int id;
 
     public int getId() {
         return id;
@@ -34,23 +23,28 @@ public class Check {
     }
 
     public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        return nameCustomer;
     }
 
     public ArrayList<Product> getListProducts() {
         return listProducts;
     }
 
-    public void setListProducts(ArrayList<Product> listProducts) {
-        this.listProducts = listProducts;
-    }
-    public double totalPrice(double price) {
-       //TODO логіка підрахунку суми
-       return 0;
+    public void showAllCheck() {
+        System.out.println("------------------------");
+        System.out.println("Назва користувача - " + getName());
+
+        double totalPrice = 0;
+        for (Product product : getListProducts()) {
+            System.out.println("PRODUCT:  (" + product.getId() + ")" + " name: " + product.getNameOfProduct() + " price: " + product.getPriceOfProduct() + " count: " + product.getCount());
+            if (product.getCount() > 0) {
+                totalPrice += product.getPriceOfProduct() * product.getCount();
+            } else {
+                totalPrice += product.getPriceOfProduct();
+            }
+        }
+        System.out.println("Загальна сума = " + totalPrice);
+        System.out.println("------------------------");
     }
 
 }
