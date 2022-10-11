@@ -3,32 +3,33 @@ package task1.model;
 import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Customer {
-    private String nameOfCustomer;
-    private ArrayList<Product> listProducts = new ArrayList<>();
+    private String name;
+    private List<Product> listProducts = new ArrayList<>();
 
 
-    public Customer(String nameOfCustomer) {
-        this.nameOfCustomer = nameOfCustomer;
+    public Customer(String name) {
+        this.name = name;
     }
 
-    public String getNameOfCustomer() {
-        return nameOfCustomer;
+    public String getName() {
+        return name;
     }
 
-    public void setNameOfCustomer(String nameOfCustomer) {
-        this.nameOfCustomer = nameOfCustomer;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public ArrayList<Product> getListProducts() {
+    public List<Product> getListProducts() {
         return listProducts;
     }
 
     public void setProductsToList(Product product) {
         if (!listProducts.isEmpty()) {
             for (Product productFromList : listProducts) {
-                if (productFromList.getNameOfProduct().equals(product.getNameOfProduct())) {
+                if (productFromList.getName().equals(product.getName())) {
                     productFromList.setCount(productFromList.getCount() + 1);
                     return;
                 }
@@ -40,7 +41,7 @@ public class Customer {
 
     public void showAllProducts() {
         for (Product product : getListProducts()) {
-            System.out.println("PRODUCT:  ("+ product.getId()+")" + " name: " + product.getNameOfProduct() + " price: " + product.getPriceOfProduct() + " count: " + product.getCount());
+            System.out.println("PRODUCT:  ("+ product.getId()+")" + " name: " + product.getName() + " price: " + product.getPrice() + " count: " + product.getCount());
         }
     }
 
@@ -48,7 +49,7 @@ public class Customer {
         long mils1 = convertToMilliseconds(localDate1);
         long mils2 = convertToMilliseconds(localDate2);
 
-        ArrayList<Product> listProductsAtTime = new ArrayList<>();
+        List<Product> listProductsAtTime = new ArrayList<>();
 
         if (!listProducts.isEmpty()) {
             for (Product product : listProducts){
@@ -60,7 +61,7 @@ public class Customer {
             }
 
             for (Product product : listProductsAtTime) {
-                System.out.println("PRODUCT:  ("+ product.getId()+")" + " name: " + product.getNameOfProduct() + " price: " + product.getPriceOfProduct() + " count: " + product.getCount() + " date: " + product.getLocalDate() );
+                System.out.println("PRODUCT:  ("+ product.getId()+")" + " name: " + product.getName() + " price: " + product.getPrice() + " count: " + product.getCount() + " date: " + product.getLocalDate() );
             }
 
         }else{

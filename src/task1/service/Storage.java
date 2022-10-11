@@ -5,10 +5,10 @@ import task1.model.Product;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.OptionalDouble;
 
 public class Storage {
     private static final int FULL_STORAGE = 10;
+    private static final int filterCount = 7;
     private ArrayList<Product> listProducts = new ArrayList<>();
 
     public ArrayList<Product> getListProducts() {
@@ -39,7 +39,7 @@ public class Storage {
 
     public void showAllProducts() {
         for (Product product : getListProducts()) {
-            System.out.println("PRODUCT:  (" + product.getId() + ")" + " name: " + product.getNameOfProduct() + " price: " + product.getPriceOfProduct());
+            System.out.println("PRODUCT:  (" + product.getId() + ")" + " name: " + product.getName() + " price: " + product.getName());
         }
     }
 
@@ -48,9 +48,8 @@ public class Storage {
     }
 
     public void filterByPriceList() {
-        int filterCount = 7;
         if (!listProducts.isEmpty()) {
-            listProducts.stream().filter(x -> x.getPriceOfProduct() >= filterCount).forEach(x -> System.out.println("name = " + x.getNameOfProduct() + " price = " + x.getPriceOfProduct()));
+            listProducts.stream().filter(x -> x.getPrice() >= filterCount).forEach(x -> System.out.println("name = " + x.getName() + " price = " + x.getPrice()));
         } else {
             System.out.println("Список пустий");
         }
@@ -58,22 +57,16 @@ public class Storage {
 
     public void sortedByPriceList() {
         if (!listProducts.isEmpty()) {
-            listProducts.stream().sorted(Comparator.comparing(Product::getPriceOfProduct)).forEach(x -> System.out.println("name = " + x.getNameOfProduct() + " price = " + x.getPriceOfProduct()));
+            listProducts.stream().sorted(Comparator.comparing(Product::getPrice)).forEach(x -> System.out.println("name = " + x.getName() + " price = " + x.getPrice()));
         } else {
             System.out.println("Список пустий");
         }
     }
 
-    public void middlePriceList() {
+    public void middlePriceList() throws StorageException {
         if (!listProducts.isEmpty()) {
-            OptionalDouble middle = listProducts.stream().mapToDouble(Product::getPriceOfProduct).average();
-            if (middle.isPresent()){
-                System.out.println("Середня ціна : " + middle.getAsDouble());
-            }
-        } else {
-            System.out.println("Список пустий");
+            listProducts.stream().mapToDouble(Product::getPrice).average().orElseThrow(() -> new StorageException("Помилка визначення"));
         }
     }
-
 
 }

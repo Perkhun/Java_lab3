@@ -1,10 +1,10 @@
 package task4;
 import java.lang.*;
 class A1 extends Thread {
-    int i,j;
-    A1(final int x, final int y) {
-        i=x;
-        j=y;
+    private int i,j;
+    public A1(final int x, final int y) {
+        this.i=x;
+        this.j=y;
     }
     public void run()
     {

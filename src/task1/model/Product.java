@@ -6,45 +6,46 @@ import java.time.LocalDate;
 public class Product {
 
     private int id;
-    private double priceOfProduct;
-    private String nameOfProduct;
-    private String nameOfCustomer;
+    private double price;
+    private String name;
+
+    private Customer customer;
     private int count;
     private LocalDate localDate;
 
 
-    public Product(String nameProduct, String priceProduct) {
-        this.nameOfProduct = nameProduct;
-        this.priceOfProduct = Double.parseDouble(priceProduct);
+    public Product(String name, String price) {
+        this.name = name;
+        this.price = Double.parseDouble(price);
     }
 
-    public Product(int id,String nameProduct, String priceProduct) {
+    public Product(int id,String name, String price) {
         this.id = id;
-        this.nameOfProduct = nameProduct;
-        this.priceOfProduct = Double.parseDouble(priceProduct);
+        this.name = name;
+        this.price = Double.parseDouble(price);
     }
 
-    public Product(int id,String nameProduct, String priceProduct, LocalDate localDate) {
+    public Product(int id,String name, String price, LocalDate localDate) {
         this.id = id;
-        this.nameOfProduct = nameProduct;
-        this.priceOfProduct = Double.parseDouble(priceProduct);
+        this.name = name;
+        this.price = Double.parseDouble(price);
         this.localDate = localDate;
     }
 
-    public String getNameOfProduct() {
-        return nameOfProduct;
+    public String getName() {
+        return name;
     }
 
-    public void setNameOfProduct(String nameOfProduct) {
-        this.nameOfProduct = nameOfProduct;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getPriceOfProduct() {
-        return priceOfProduct;
+    public double getPrice() {
+        return price;
     }
 
-    public void setPriceOfProduct(double priceOfProduct) {
-        this.priceOfProduct = priceOfProduct;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public int getId() {
@@ -59,13 +60,14 @@ public class Product {
         super();
     }
 
-    public String getNameOfCustomer() {
-        return nameOfCustomer;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setNameOfCustomer(String nameOfCustomer) {
-        this.nameOfCustomer = nameOfCustomer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
+
 
     public  int getCount() {
         return count;
@@ -82,4 +84,8 @@ public class Product {
     public void setLocalDate(LocalDate localDate) {
         this.localDate = localDate;
     }
+
+    public void setCustomer(String name) {
+    }
+
 }

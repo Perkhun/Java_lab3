@@ -1,9 +1,9 @@
 package task4;
 import java.lang.*;
 class B1 extends Thread {
-    double i;
-    B1(final double x) {
-        i=x;
+    private double i;
+    public B1(final double x) {
+        this.i=x;
     }
     public void run() {
         System.out.println("THREAD B:: TRIGONOMETRIC OPERATIONS");

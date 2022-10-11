@@ -15,13 +15,13 @@ public class Shop {
     public static Seller seller = new Seller();
     public final static Scanner sc = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws StorageException {
         storage.addDefaultProduct();
 
         initUser();
     }
 
-    private static void initUser() {
+    private static void initUser() throws StorageException {
         System.out.println("------------------------------");
         System.out.println("Введіть імя користувача: ");
         String nameUser = sc.nextLine();
@@ -30,7 +30,7 @@ public class Shop {
         showOptionsStorage();
     }
 
-    private static void showOptionsStorage() {
+    private static void showOptionsStorage() throws StorageException {
         System.out.println("------------------------------");
         System.out.println("Оберіть одну з функцій: ");
         System.out.println("(1)Внести товар"); 
@@ -67,7 +67,7 @@ public class Shop {
         }
     }
 
-    private static void showOptionsShop() {
+    private static void showOptionsShop() throws StorageException {
         System.out.println("------------------------------");
         System.out.println("Оберіть одну з функцій: ");
         System.out.println("(1)Купити товар");
@@ -108,7 +108,7 @@ public class Shop {
         }
     }
 
-    private static void showOptionsUser() {
+    private static void showOptionsUser() throws StorageException {
         System.out.println("------------------------------");
         System.out.println("Оберіть одну з функцій: ");
         System.out.println("(1)Показати всі витрати користувача за певний період часу");
@@ -133,7 +133,7 @@ public class Shop {
         }
     }
 
-    private static void addProduct() {
+    private static void addProduct() throws StorageException {
         System.out.println("Введіть назву товару: ");
         String nameProduct = sc.nextLine();
         if (nameProduct.isEmpty()) {
@@ -157,7 +157,7 @@ public class Shop {
         showOptionsStorage();
     }
 
-    private static void buyProduct() {
+    private static void buyProduct() throws StorageException {
         storage.showAllProducts();
 
         System.out.println("Введіть номер товару :");
@@ -169,14 +169,14 @@ public class Shop {
 
         product.setLocalDate(dtNow);
         customer.setProductsToList(product);
-        product.setNameOfCustomer(customer.getNameOfCustomer());
+        product.setCustomer(customer.getName());
         seller.setPurchasedProduct(product);
 
         showOptionsShop();
     }
 
     private static void giveCheck() {
-        Check check = new Check(1, customer.getNameOfCustomer(), customer.getListProducts());
+        Check check = new Check(1, customer.getName(), customer.getListProducts());
         check.showAllCheck();
     }
 

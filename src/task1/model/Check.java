@@ -1,14 +1,15 @@
 package task1.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Check {
     private int id;
     private String nameCustomer;
-    private ArrayList<Product> listProducts = new ArrayList<>();
+    private List<Product> listProducts = new ArrayList<>();
 
-    public Check(int id, String nameCustomer, ArrayList<Product> listProducts) {
+    public Check(int id, String nameCustomer, List<Product> listProducts) {
         this.id = id;
         this.nameCustomer = nameCustomer;
         this.listProducts = listProducts;
@@ -26,7 +27,7 @@ public class Check {
         return nameCustomer;
     }
 
-    public ArrayList<Product> getListProducts() {
+    public List<Product> getListProducts() {
         return listProducts;
     }
 
@@ -36,11 +37,11 @@ public class Check {
 
         double totalPrice = 0;
         for (Product product : getListProducts()) {
-            System.out.println("PRODUCT:  (" + product.getId() + ")" + " name: " + product.getNameOfProduct() + " price: " + product.getPriceOfProduct() + " count: " + product.getCount());
+            System.out.println("PRODUCT:  (" + product.getId() + ")" + " name: " + product.getName() + " price: " + product.getPrice() + " count: " + product.getCount());
             if (product.getCount() > 0) {
-                totalPrice += product.getPriceOfProduct() * product.getCount();
+                totalPrice += product.getPrice() * product.getCount();
             } else {
-                totalPrice += product.getPriceOfProduct();
+                totalPrice += product.getPrice();
             }
         }
         System.out.println("Загальна сума = " + totalPrice);
